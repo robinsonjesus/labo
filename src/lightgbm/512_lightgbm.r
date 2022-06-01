@@ -8,8 +8,10 @@ require("data.table")
 require("lightgbm")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/")  #Establezco el Working Directory
+# setwd("~/buckets/b1/")  #Establezco el Working Directory
 
+# para correr local
+setwd("C:\\Users\\Tomás García\\Documents\\MD")
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
 
@@ -31,11 +33,13 @@ dtrain  <- lgb.Dataset( data= data.matrix(  dataset[ , campos_buenos, with=FALSE
 #genero el modelo con los parametros por default
 modelo  <- lgb.train( data= dtrain,
                       param= list( objective=        "binary",
-                                   num_iterations=     73,
-                                   num_leaves=         874,
+                                   verbosity = -100,
+                                   num_iterations=     67,
+                                   learning_rate = 0.1,
+                                   num_leaves=         31,
                                    feature_fraction=    0.5,
-                                   min_data_in_leaf= 3399,
-								   max_depth = 12
+                                   min_data_in_leaf= 20,
+								                   max_depth = -1,
                                    seed= 999983 )
                     )
 
@@ -53,7 +57,7 @@ prediccion  <- predict( modelo,
 
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
-                                 "Predicted"= as.integer(prediccion > 0.016293567502504 ) )  ) #genero la salida
+                                 "Predicted"= as.integer(prediccion > 0.0167 ) )  ) #genero la salida
 
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/KA2512/", showWarnings = FALSE )
