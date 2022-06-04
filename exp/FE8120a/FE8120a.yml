@@ -23,7 +23,7 @@ param:
 
   tendenciaYmuchomas: 
     correr: TRUE #Great power comes with great responsability
-    ventana: 6
+    ventana: 2
     tendencia: TRUE
     minimo:    FALSE
     maximo:    FALSE
