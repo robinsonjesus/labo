@@ -246,6 +246,7 @@ AgregarVariables  <- function( dataset )
   dataset[ , mvr_mpagosdolares       := mv_mpagosdolares / mv_mlimitecompra ]
   dataset[ , mvr_mconsumototal       := mv_mconsumototal  / mv_mlimitecompra ]
   dataset[ , mvr_mpagominimo         := mv_mpagominimo  / mv_mlimitecompra ]
+  dataset[ , mvr_mpromediopago      := mv_mpromediopago  / mv_mlimitecompra ]
 
   #Aqui debe usted agregar sus propias nuevas variables
 
