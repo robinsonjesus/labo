@@ -5,3 +5,5 @@ Buenos Aires, 2022-04-06.
 by @robinsonjesus in the academy
 
 Data Mining - Minería de Datos - ITBA 2022
+
+Professor: Gustavo Denicolay
